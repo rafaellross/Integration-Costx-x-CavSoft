@@ -1,0 +1,12 @@
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.exe.config
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.exe
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\LibCostXCavSoft.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\Npgsql.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\System.Threading.Tasks.Extensions.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\LibCostXCavSoft.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\Npgsql.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\bin\Debug\System.Threading.Tasks.Extensions.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.csprojResolveAssemblyReference.cache
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.exe
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.pdb

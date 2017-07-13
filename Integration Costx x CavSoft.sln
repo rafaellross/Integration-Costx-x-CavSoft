@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration Costx x CavSoft", "Integration Costx x CavSoft\Integration Costx x CavSoft.csproj", "{A82D99FA-B34C-4376-99B1-DD34BEB1A323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibCostXCavSoft", "LibCostXCavSoft\LibCostXCavSoft.csproj", "{894FBEC4-4110-40DC-B125-337648164AC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCostx", "TestCostx\TestCostx.csproj", "{A4B54C08-D73B-42FB-9F50-004CC5310B34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A82D99FA-B34C-4376-99B1-DD34BEB1A323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82D99FA-B34C-4376-99B1-DD34BEB1A323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82D99FA-B34C-4376-99B1-DD34BEB1A323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82D99FA-B34C-4376-99B1-DD34BEB1A323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894FBEC4-4110-40DC-B125-337648164AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894FBEC4-4110-40DC-B125-337648164AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894FBEC4-4110-40DC-B125-337648164AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894FBEC4-4110-40DC-B125-337648164AC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
