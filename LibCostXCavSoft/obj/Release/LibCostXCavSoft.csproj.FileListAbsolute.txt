@@ -1,0 +1,9 @@
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\LibCostXCavSoft.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\LibCostXCavSoft.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\Npgsql.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\Npgsql.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.csprojResolveAssemblyReference.cache

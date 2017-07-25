@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using LibCostXCavSoft;
+using System.Configuration;
 
 namespace Integration_Costx_x_CavSoft
 {
@@ -19,36 +20,29 @@ namespace Integration_Costx_x_CavSoft
         private DbCredentials credentialsCavSoft { get; set; }
         private DB cavSoft { get; set; }
         private DbPostgres costX { get; set; }
+        public Configuration config { get; set; }
 
         public Connection()
         {
             InitializeComponent();
-            credentialsCostx = new DbCredentials();
-            credentialsCostx.Server = "192.168.1.113";
-            credentialsCostx.Port = "17005";
-            credentialsCostx.DataBaseName = "costx";
-            credentialsCostx.UserName = "integration";
-            credentialsCostx.Password = "1234";
 
-            txtServerCostx.Text = credentialsCostx.Server;
-            txtDatabaseCostx.Text = credentialsCostx.DataBaseName;
-            txtUserCostx.Text = credentialsCostx.UserName;
-            txtPasswordCostx.Text = credentialsCostx.Password;
+            config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                                    
 
-            credentialsCavSoft = new DbCredentials();
-            credentialsCavSoft.Server = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
-            credentialsCavSoft.DataBaseName = "CavSoft_Dev";
-            credentialsCavSoft.UserName = "smart";
-            credentialsCavSoft.Password = "smart";
+            txtServerCostx.Text = config.AppSettings.Settings["CostxServer"].Value;
+            
+            txtDatabaseCostx.Text = config.AppSettings.Settings["CostxDataBaseName"].Value;
+            txtUserCostx.Text = config.AppSettings.Settings["CostxUserName"].Value;
+            txtPasswordCostx.Text = config.AppSettings.Settings["CostxPassword"].Value;
 
-            txtServerCavSoft.Text = credentialsCavSoft.Server;
-            txtDatabaseCavSoft.Text = credentialsCavSoft.DataBaseName;
-            txtUserCavSoft.Text = credentialsCavSoft.UserName;
-            txtPasswordCavSoft.Text = credentialsCavSoft.Password;
-
-
+            txtServerCavSoft.Text = config.AppSettings.Settings["CavSoftServer"].Value;
+            txtDatabaseCavSoft.Text = config.AppSettings.Settings["CavSoftDataBaseName"].Value;
+            txtUserCavSoft.Text = config.AppSettings.Settings["CavSoftUserName"].Value;
+            txtPasswordCavSoft.Text = config.AppSettings.Settings["CavSoftPassword"].Value;
 
         }
+
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -170,11 +164,19 @@ namespace Integration_Costx_x_CavSoft
 
         private void btnTestCostx_Click(object sender, EventArgs e)
         {
+            if (testConnectionCostx())
+            {
+                MessageBox.Show("Connected to Costx!");
+            }
+          
+        }
 
+        private bool testConnectionCostx()
+        {
             DbPostgres costX = new DbPostgres(txtServerCostx.Text, "17005", txtDatabaseCostx.Text, txtUserCostx.Text, txtPasswordCostx.Text);
             if (costX.Connection.State == ConnectionState.Open)
             {
-                MessageBox.Show("Connected to Costx!");
+                return true;
 
             }
             else
@@ -183,21 +185,22 @@ namespace Integration_Costx_x_CavSoft
                 {
                     costX.Connection.Open();
                 }
-                catch (Exception ex )
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);                    
+                    MessageBox.Show(ex.Message);
                 }
-                
+                return false;
+
             }
 
         }
 
-        private void btnTestCavSoft_Click(object sender, EventArgs e)
+        private bool testConnectionCavSoft()
         {
             DB cavSoft = new DB(false, txtServerCavSoft.Text, txtDatabaseCavSoft.Text, txtUserCavSoft.Text, txtPasswordCavSoft.Text);
             if (cavSoft.Connection.State == ConnectionState.Open)
             {
-                MessageBox.Show("Connected to CavSoft!");
+                return true;
 
             }
             else
@@ -210,17 +213,35 @@ namespace Integration_Costx_x_CavSoft
                 {
                     MessageBox.Show(ex.Message);
                 }
+                return false;
+            }
 
+        }
+
+        private void btnTestCavSoft_Click(object sender, EventArgs e)
+        {
+            if (testConnectionCavSoft())
+            {
+                MessageBox.Show("Connected to CavSoft!");
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            costX = new DbPostgres(txtServerCostx.Text, "17005", txtDatabaseCostx.Text, txtUserCostx.Text, txtPasswordCostx.Text);
-            cavSoft = new DB(false, txtServerCavSoft.Text, txtDatabaseCavSoft.Text, txtUserCavSoft.Text, txtPasswordCavSoft.Text);
-            var projs = new SelectProjects(cavSoft, costX);
-            projs.Show();
-            this.Hide();
+            if (testConnectionCavSoft() && testConnectionCostx())
+            {
+                config.Save(ConfigurationSaveMode.Modified);
+                costX = new DbPostgres(txtServerCostx.Text, "17005", txtDatabaseCostx.Text, txtUserCostx.Text, txtPasswordCostx.Text);
+                cavSoft = new DB(false, txtServerCavSoft.Text, txtDatabaseCavSoft.Text, txtUserCavSoft.Text, txtPasswordCavSoft.Text);
+                var projs = new SelectProjects(cavSoft, costX);
+                projs.Show();
+                this.Hide();
+            }
+        }
+
+        private void Connection_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

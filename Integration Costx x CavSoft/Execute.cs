@@ -13,13 +13,14 @@ namespace Integration_Costx_x_CavSoft
 {
     public partial class Execute : Form
     {
-        private DB cavSoft;
-        private DbPostgres costX;
-        private List<string> projKeys;
+        public DB cavSoft;
+        public DbPostgres costX;
+        public List<string> projKeys;
 
         public Execute()
         {
             InitializeComponent();
+
         }
 
         public Execute(DB cavSoft, DbPostgres costX, List<string> projKeys)
@@ -27,10 +28,13 @@ namespace Integration_Costx_x_CavSoft
             this.cavSoft = cavSoft;
             this.costX = costX;
             this.projKeys = projKeys;
+                                   
+        }
 
+        public void Start()
+        {
             this.cavSoft.Execute(Queries.dropTableCostx());
             this.cavSoft.Execute(Queries.createTableCostx());
-
 
             foreach (var projKey in projKeys)
             {
@@ -50,9 +54,10 @@ namespace Integration_Costx_x_CavSoft
                 insertIntoCavSoft(projKey);
                 manipulate.cavSoft.Dispose();
                 manipulate.costX.Dispose();
+                
             }
+
             this.cavSoft.Dispose();
-            
         }
 
         public ManipulateCostx manipulate { get; private set; }
@@ -78,17 +83,20 @@ namespace Integration_Costx_x_CavSoft
 
             var drawings = manipulate.getDrawings(projectKey);
             //Start to insert drawings
+            var listOrderDrawing = 1;
             foreach (var drawing in drawings)
             {
+                
                 var DrawingID = manipulate.getDetailID();
-                cavSoft.Execute(Queries.insertDrawing(project.EstimateID, project.ParentID, drawing, DrawingID));
+                cavSoft.Execute(Queries.insertDrawing(project.EstimateID, project.ParentID, drawing, DrawingID, listOrderDrawing.ToString()));
 
                 var folders = manipulate.getFolders(projectKey, drawing);
                 //*Folder insert Eg. Sewer*/
+                var folderOrder = 1;
                 foreach (var folder in folders)
                 {
                     var FolderID = manipulate.getDetailID();
-                    cavSoft.Execute(Queries.insertFolder(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID));
+                    cavSoft.Execute(Queries.insertFolder(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, folderOrder.ToString()));
                     //		/*Insert Item Eg. PVC Pipe*/
                     var items = manipulate.getItems(projectKey, drawing, folder);
                     for (int i = 0; i < items.Count; i++)
@@ -97,20 +105,53 @@ namespace Integration_Costx_x_CavSoft
                         var ItemCode = items[i]["CodeItem"];
 
                         var RateCavSoft = cavSoft.queryListToDic(Queries.getRate(ItemCode))[0];
-                        var test = Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft);
+                        if (ItemCode == "SPECIAL" || ItemCode == "")
+                        {
+                            RateCavSoft["Description"] = items[i]["DescriptionItem"];
+                        }
+                        
+                        //var test = Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft);
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
-
+                        //Insert StandardRateCostTypeTotals
+                        var testStandardRateCostTypeTotals = Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode);
+                        cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
                         //Insert Sub-items
+
+                        
                         cavSoft.Execute(Queries.insertSubItems(project.EstimateID, ItemID, ItemCode));
+
+                        //Get sub-item from CavSoft to insert their sub-subItems
+                        
+
+                        var subSubItems = manipulate.getSubItems(project.EstimateID, ItemID);
+                        foreach (var subItem in subSubItems)
+                        {
+                            //Insert StandardRateCostTypeTotals
+                            cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
+
+                            cavSoft.Execute(Queries.insertSubItems(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
+                        }
                     }
                 }
+                listOrderDrawing++;
             }
+            txtResults.AppendText("Project " + project.EstimateNo + " - " + project.Description + Environment.NewLine);
 
         }
 
         private void Execute_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {            
+            Application.Exit();
+        }
+
+        private void Execute_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

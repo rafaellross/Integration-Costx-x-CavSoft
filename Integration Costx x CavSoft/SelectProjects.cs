@@ -159,9 +159,14 @@ namespace Integration_Costx_x_CavSoft
                     projKeys.Add(Convert.ToString(row.Cells[1].Value));
                 }                
             }
-            var execute = new Execute(cavSoft, costX, projKeys);
+            //Execute execute = new Execute(cavSoft, costX, projKeys);
+            Execute execute = new Execute();
+            execute.cavSoft = cavSoft;
+            execute.costX = costX;
+            execute.projKeys = projKeys;
             execute.Show();
             this.Hide();
+            execute.Start();
 
         }
     }

@@ -1,0 +1,17 @@
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\Integration Costx x CavSoft.exe.config
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\Integration Costx x CavSoft.exe
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\Integration Costx x CavSoft.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\LibCostXCavSoft.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\Npgsql.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\System.Threading.Tasks.Extensions.dll
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\LibCostXCavSoft.pdb
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\Npgsql.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Release\System.Threading.Tasks.Extensions.xml
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration Costx x CavSoft.csprojResolveAssemblyReference.cache
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration_Costx_x_CavSoft.Connection.resources
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration_Costx_x_CavSoft.Execute.resources
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration_Costx_x_CavSoft.Properties.Resources.resources
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration_Costx_x_CavSoft.SelectProjects.resources
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration Costx x CavSoft.csproj.GenerateResource.Cache
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration Costx x CavSoft.exe
+e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Release\Integration Costx x CavSoft.pdb

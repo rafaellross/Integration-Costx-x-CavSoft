@@ -81,7 +81,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 23);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Cancel";
+            this.button2.Text = "&Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -92,7 +92,7 @@
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(86, 23);
             this.btnExecute.TabIndex = 5;
-            this.btnExecute.Text = "Execute";
+            this.btnExecute.Text = "&Execute";
             this.btnExecute.UseVisualStyleBackColor = true;
             this.btnExecute.Click += new System.EventHandler(this.btnNext_Click_1);
             // 

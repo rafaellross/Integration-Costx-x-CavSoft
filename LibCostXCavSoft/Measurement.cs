@@ -20,6 +20,7 @@ namespace LibCostXCavSoft
         public string Length { get; set; }
         public string Count { get; set; }
         public string Area { get; set; }
+        public string Multiplier { get; set; }
         public Measurement(NpgsqlDataReader measurement)
         {                        
             ProjectKey = measurement.GetString(0);
@@ -29,6 +30,7 @@ namespace LibCostXCavSoft
             Folder = measurement.GetString(4);
             DimensionType = measurement.GetString(6);
             this.getMeasurement(measurement.GetString(5));
+            this.Multiplier = measurement.GetString(7);
             MeasurementItem = getLengthCount();
         }
 

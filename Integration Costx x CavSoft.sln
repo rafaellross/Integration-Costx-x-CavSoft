@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibCostXCavSoft", "LibCostX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCostx", "TestCostx\TestCostx.csproj", "{A4B54C08-D73B-42FB-9F50-004CC5310B34}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Integration CavSoft x CostX", "Setup Integration CavSoft x CostX\Setup Integration CavSoft x CostX.vdproj", "{33DD56EF-5E67-4E3B-955F-9F1FAFE8DEAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B54C08-D73B-42FB-9F50-004CC5310B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33DD56EF-5E67-4E3B-955F-9F1FAFE8DEAB}.Debug|Any CPU.ActiveCfg = Debug
+		{33DD56EF-5E67-4E3B-955F-9F1FAFE8DEAB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

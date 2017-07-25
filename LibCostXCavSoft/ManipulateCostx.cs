@@ -112,6 +112,12 @@ namespace LibCostXCavSoft
             return query[0]["ProjectName"];
 
         }
+        
+        public List<Dictionary<string, string>> getSubItems(string EstimateID, string SubItemID)
+        {
+            var query = cavSoft.queryListToDic(Queries.getSubItems(EstimateID, SubItemID));
+            return query;
+        }
 
     }
 }

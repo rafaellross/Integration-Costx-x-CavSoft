@@ -39,12 +39,24 @@ namespace LibCostXCavSoft
                 "User id=" + User + ";" +
                 "Password=" + Password + ";MultipleActiveResultSets=True";
             }
-            Connection.Open();
+            try
+            {
+                Connection.Open();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);                
+            }
+            
             
         }
 
         public void Execute(string queryParam)
         {
+            if (this.Connection.State != System.Data.ConnectionState.Open)
+            {
+                this.Connection.Open();
+            }
             var cmd = new SqlCommand
             {
                 CommandText = queryParam,

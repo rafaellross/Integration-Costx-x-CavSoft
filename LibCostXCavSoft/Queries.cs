@@ -17,7 +17,8 @@ namespace LibCostXCavSoft
                         group_dim.custom1name as code_cav,
                         group_dim.fldr as folder,
                         dim.properties as measurement,
-                        dimtype
+                        dimtype,
+                        cast(group_dim.multiplier as varchar(10))
 
                         from dimgrprvsn group_dim
                         inner join dim
@@ -39,15 +40,15 @@ namespace LibCostXCavSoft
             query += "values(";
             query += "'" + measurement.ProjectKey + "',";
             query += "'" + measurement.ProjectName + "', ";
-            query += "'" + measurement.DescriptionItem + "', ";
+            query += "'" + measurement.DescriptionItem.Replace("'", "") + "', ";
             query += "'" + measurement.CodeItem + "', ";
 
             query += "'" + (measurement.Folder.Split('\\').Length > 1? measurement.Folder.Split('\\')[1] : "") + "', ";
             query +=    measurement.MeasurementItem + ", ";
             query += "'" + measurement.DimensionType + "',";
-            query +=    measurement.Length + ", ";
-            query +=    measurement.Area + ", ";
-            query +=    measurement.Count + ", ";
+            query +=    measurement.Length + " * " + measurement.Multiplier + ", ";
+            query +=    measurement.Area + " * " + measurement.Multiplier + ", ";
+            query +=    measurement.Count + " * " + measurement.Multiplier + ", ";
             query += "'" + measurement.Folder.Split('\\')[0] + "'); ";
             return query;                       
         }
@@ -57,15 +58,15 @@ namespace LibCostXCavSoft
             return "select distinct Drawing  from costx Where ProjectKey = '" + projectKey + "'";
         }
 
-        public static string insertFolder(string estimateID, string parentID, string drawing, string folder, string DrawingID, string FolderID)
+        public static string insertFolder(string estimateID, string parentID, string drawing, string folder, string DrawingID, string FolderID, string folderOrder)
         {
             return @"Declare @Folder_DetailID int = " + FolderID + @";
                         Declare @EstimateID int = " + estimateID + @";
                         Declare @Draw_DetailID int = " + DrawingID + @";
 
-		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, 1);
-		                UPDATE EstimateDetails SET ListOrder = 1 WHERE DetailID = @Folder_DetailID;
-		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, ListOrder = 1, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;";
+		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, "+ folderOrder + @");
+		                
+		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;";
         }
 
         public static string insertSubItems(string EstimateID, string ItemID, string itemCode)
@@ -73,7 +74,7 @@ namespace LibCostXCavSoft
             return @"insert into EstimateDetails
 		                select (select Max(DetailID) from EstimateDetails)+1 + ROW_NUMBER() OVER (ORDER BY RateID) as DetailID,
 		                '" + EstimateID + @"' as EstimateID,
-		                '" + ItemID + @"' as ItemID,
+		                '" + ItemID + @"' as ParentID,
 		                '4' as TreeLevel,
 		                rates.ListOrder,
 		                rates.CodeType,
@@ -105,6 +106,25 @@ namespace LibCostXCavSoft
 		                where ParentID = (select Top 1 RateID from StandardRates where RateCode = '" + itemCode + "');";
         }
 
+        public static string insertStandardRateCostTypeTotals(string estimateID, string itemID, string itemCode)
+        {
+            return @"INSERT INTO EstimateCostTypeTotals (TotalID, EstimateID, DetailID, CostType, MarkupLevel, TotalCost, TotalHours) 
+
+                    SELECT (Select Max(TotalID) From EstimateCostTypeTotals)+1 + ROW_NUMBER() OVER (ORDER BY Name desc) as TotalID, 
+                    " + estimateID + @" as EstimateID,
+                    " + itemID + @" as DetailID,
+                    StandardRateCostTypeTotals.CostType,
+                     'A' as MarkupLevel,
+                     StandardRateCostTypeTotals.TotalCost,
+                     StandardRateCostTypeTotals.TotalHours
+                    FROM StandardRateCostTypeTotals LEFT JOIN CostTypes ON StandardRateCostTypeTotals.CostType = CostTypes.TypeID WHERE RateID = (select Top 1 RateID from StandardRates where RateCode = '" + itemCode + @"') ORDER BY StandardRateCostTypeTotals.CostType";
+        }
+
+        public static string getSubItems(string estimateID, string subItemID)
+        {
+            return @"select DetailID as ParentID, RateCode from EstimateDetails where EstimateID = " + estimateID + " and ParentID = " + subItemID + ";";
+        }
+
         public static string getRate(string itemCode)
         {
             return "select Description, Units, CostType, Cost from StandardRates where RateCode = '" + itemCode + "' and LibraryID = 1;";
@@ -120,10 +140,10 @@ namespace LibCostXCavSoft
         {
             return @"select CodeItem,
                     Case when DimensionType = 'C' then Sum(Count)
-                    else Sum(Length) end Quantity
-
+                    else Sum(Length) end Quantity,
+                    DescriptionItem
                     from costx where ProjectKey = '" + projectKey + "' and Drawing = '" + drawing + "' and Folder = '" + folder + @"'
-                    group by CodeItem, DimensionType";
+                    group by CodeItem, DimensionType, DescriptionItem";
         }
 
         public static string InsertProjectCover(string estimateID, string estimateNo, string description)
@@ -283,13 +303,13 @@ namespace LibCostXCavSoft
                     ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
         }
 
-        public static string insertDrawing(string EstimateID, string ParentID, string Description, string DrawingID)
+        public static string insertDrawing(string EstimateID, string ParentID, string Description, string DrawingID, string listOrder)
         {
             return @"Declare @Draw_DetailID int =" + DrawingID + @";
                      Declare @EstimateID int = "+ EstimateID + @";
                      Declare @ParentID int = " + ParentID + @";
 		            INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) 
-		            VALUES (@Draw_DetailID, @EstimateID, @ParentID, 1, isnull((SELECT MAX(ListOrder)+1 AS MaxOrder FROM EstimateDetails WHERE ParentID = @ParentID), 1));
+		            VALUES (@Draw_DetailID, @EstimateID, @ParentID, 1, " + listOrder + " AS MaxOrder FROM EstimateDetails WHERE ParentID = @ParentID), 1));
 
 		            UPDATE EstimateDetails SET ListOrder = 1 WHERE DetailID = @Draw_DetailID;
 		            

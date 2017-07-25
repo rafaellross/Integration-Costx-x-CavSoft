@@ -30,15 +30,20 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grCostx = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtServerCostx = new System.Windows.Forms.TextBox();
-            this.txtDatabaseCostx = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtUserCostx = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnTestCostx = new System.Windows.Forms.Button();
             this.txtPasswordCostx = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtUserCostx = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDatabaseCostx = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtServerCostx = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTestCavSoft = new System.Windows.Forms.Button();
             this.txtPasswordCavSoft = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUserCavSoft = new System.Windows.Forms.TextBox();
@@ -47,11 +52,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtServerCavSoft = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnTestCostx = new System.Windows.Forms.Button();
-            this.btnTestCavSoft = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -100,22 +100,50 @@
             this.grCostx.TabStop = false;
             this.grCostx.Text = "Database CostX";
             // 
-            // label1
+            // btnTestCostx
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Server: ";
+            this.btnTestCostx.Enabled = false;
+            this.btnTestCostx.Location = new System.Drawing.Point(339, 70);
+            this.btnTestCostx.Name = "btnTestCostx";
+            this.btnTestCostx.Size = new System.Drawing.Size(110, 23);
+            this.btnTestCostx.TabIndex = 5;
+            this.btnTestCostx.Text = "Test Connection";
+            this.btnTestCostx.UseVisualStyleBackColor = true;
+            this.btnTestCostx.Click += new System.EventHandler(this.btnTestCostx_Click);
             // 
-            // txtServerCostx
+            // txtPasswordCostx
             // 
-            this.txtServerCostx.Location = new System.Drawing.Point(103, 30);
-            this.txtServerCostx.Name = "txtServerCostx";
-            this.txtServerCostx.Size = new System.Drawing.Size(189, 20);
-            this.txtServerCostx.TabIndex = 1;
-            this.txtServerCostx.TextChanged += new System.EventHandler(this.txtServerCostx_TextChanged);
+            this.txtPasswordCostx.Location = new System.Drawing.Point(103, 108);
+            this.txtPasswordCostx.Name = "txtPasswordCostx";
+            this.txtPasswordCostx.Size = new System.Drawing.Size(189, 20);
+            this.txtPasswordCostx.TabIndex = 7;
+            this.txtPasswordCostx.TextChanged += new System.EventHandler(this.txtPasswordCostx_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(38, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Password: ";
+            // 
+            // txtUserCostx
+            // 
+            this.txtUserCostx.Location = new System.Drawing.Point(103, 82);
+            this.txtUserCostx.Name = "txtUserCostx";
+            this.txtUserCostx.Size = new System.Drawing.Size(189, 20);
+            this.txtUserCostx.TabIndex = 5;
+            this.txtUserCostx.TextChanged += new System.EventHandler(this.txtUserCostx_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "User: ";
             // 
             // txtDatabaseCostx
             // 
@@ -135,39 +163,53 @@
             this.label2.Text = "Database Name: ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // txtUserCostx
+            // txtServerCostx
             // 
-            this.txtUserCostx.Location = new System.Drawing.Point(103, 82);
-            this.txtUserCostx.Name = "txtUserCostx";
-            this.txtUserCostx.Size = new System.Drawing.Size(189, 20);
-            this.txtUserCostx.TabIndex = 5;
-            this.txtUserCostx.TextChanged += new System.EventHandler(this.txtUserCostx_TextChanged);
+            this.txtServerCostx.Location = new System.Drawing.Point(103, 30);
+            this.txtServerCostx.Name = "txtServerCostx";
+            this.txtServerCostx.Size = new System.Drawing.Size(189, 20);
+            this.txtServerCostx.TabIndex = 1;
+            this.txtServerCostx.TextChanged += new System.EventHandler(this.txtServerCostx_TextChanged);
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "User: ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Server: ";
             // 
-            // txtPasswordCostx
+            // button3
             // 
-            this.txtPasswordCostx.Location = new System.Drawing.Point(103, 108);
-            this.txtPasswordCostx.Name = "txtPasswordCostx";
-            this.txtPasswordCostx.Size = new System.Drawing.Size(189, 20);
-            this.txtPasswordCostx.TabIndex = 7;
-            this.txtPasswordCostx.TextChanged += new System.EventHandler(this.txtPasswordCostx_TextChanged);
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(199, 187);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Back";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // button2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Password: ";
+            this.button2.Location = new System.Drawing.Point(394, 187);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "&Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Enabled = false;
+            this.btnNext.Location = new System.Drawing.Point(291, 187);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(86, 23);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.Text = "&Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // groupBox1
             // 
@@ -186,6 +228,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Database CavSoft";
+            // 
+            // btnTestCavSoft
+            // 
+            this.btnTestCavSoft.Enabled = false;
+            this.btnTestCavSoft.Location = new System.Drawing.Point(339, 68);
+            this.btnTestCavSoft.Name = "btnTestCavSoft";
+            this.btnTestCavSoft.Size = new System.Drawing.Size(110, 23);
+            this.btnTestCavSoft.TabIndex = 8;
+            this.btnTestCavSoft.Text = "Test Connection";
+            this.btnTestCavSoft.UseVisualStyleBackColor = true;
+            this.btnTestCavSoft.Click += new System.EventHandler(this.btnTestCavSoft_Click);
             // 
             // txtPasswordCavSoft
             // 
@@ -255,69 +308,17 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Server: ";
             // 
-            // btnNext
-            // 
-            this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(291, 187);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(86, 23);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(394, 187);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(199, 187);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnTestCostx
-            // 
-            this.btnTestCostx.Enabled = false;
-            this.btnTestCostx.Location = new System.Drawing.Point(339, 70);
-            this.btnTestCostx.Name = "btnTestCostx";
-            this.btnTestCostx.Size = new System.Drawing.Size(110, 23);
-            this.btnTestCostx.TabIndex = 5;
-            this.btnTestCostx.Text = "Test Connection";
-            this.btnTestCostx.UseVisualStyleBackColor = true;
-            this.btnTestCostx.Click += new System.EventHandler(this.btnTestCostx_Click);
-            // 
-            // btnTestCavSoft
-            // 
-            this.btnTestCavSoft.Enabled = false;
-            this.btnTestCavSoft.Location = new System.Drawing.Point(339, 68);
-            this.btnTestCavSoft.Name = "btnTestCavSoft";
-            this.btnTestCavSoft.Size = new System.Drawing.Size(110, 23);
-            this.btnTestCavSoft.TabIndex = 8;
-            this.btnTestCavSoft.Text = "Test Connection";
-            this.btnTestCavSoft.UseVisualStyleBackColor = true;
-            this.btnTestCavSoft.Click += new System.EventHandler(this.btnTestCavSoft_Click);
-            // 
-            // Form1
+            // Connection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 394);
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Connection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Integration CostX x CavSoft";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Connection_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
