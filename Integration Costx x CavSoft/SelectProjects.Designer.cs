@@ -92,7 +92,7 @@
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(86, 23);
             this.btnExecute.TabIndex = 5;
-            this.btnExecute.Text = "&Execute";
+            this.btnExecute.Text = "&Next";
             this.btnExecute.UseVisualStyleBackColor = true;
             this.btnExecute.Click += new System.EventHandler(this.btnNext_Click_1);
             // 

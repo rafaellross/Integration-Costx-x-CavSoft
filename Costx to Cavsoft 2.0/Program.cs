@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Integration_Costx_x_CavSoft
+namespace Costx_to_Cavsoft_2._0
 {
     static class Program
     {
@@ -17,16 +17,8 @@ namespace Integration_Costx_x_CavSoft
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var connection = new Connection();
-            try
-            {
-                Application.Run(connection);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                throw;
-            }
-            
+            Application.Run(connection);
+
         }
     }
 }

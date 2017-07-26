@@ -20,44 +20,22 @@ namespace Integration_Costx_x_CavSoft
         public Execute()
         {
             InitializeComponent();
-
         }
 
         public Execute(DB cavSoft, DbPostgres costX, List<string> projKeys)
         {
+
+            InitializeComponent();
             this.cavSoft = cavSoft;
             this.costX = costX;
             this.projKeys = projKeys;
+            txtResults.Text = "Click Start button!";
                                    
         }
 
         public void Start()
         {
-            this.cavSoft.Execute(Queries.dropTableCostx());
-            this.cavSoft.Execute(Queries.createTableCostx());
 
-            foreach (var projKey in projKeys)
-            {
-                manipulate = new ManipulateCostx();
-                manipulate.cavSoft = this.cavSoft;
-                manipulate.costX = this.costX;
-
-                if (manipulate.costX.Connection.State != ConnectionState.Open)
-                {
-                    manipulate.costX.Connection.Open();
-                }
-                if (manipulate.cavSoft.Connection.State != ConnectionState.Open)
-                {
-                    manipulate.cavSoft.Connection.Open();
-                }
-                extractFromCostX(projKey);
-                insertIntoCavSoft(projKey);
-                manipulate.cavSoft.Dispose();
-                manipulate.costX.Dispose();
-                
-            }
-
-            this.cavSoft.Dispose();
         }
 
         public ManipulateCostx manipulate { get; private set; }
@@ -76,6 +54,16 @@ namespace Integration_Costx_x_CavSoft
             project.EstimateNo = manipulate.getEstimateNo();
             project.EstimateID = manipulate.getEstimateID();
             project.Description = manipulate.getProjectName(projectKey);
+            txtResults.BeginInvoke(
+                 new Action(() =>
+                 {
+                     txtResults.Text += "*********************************" + Environment.NewLine;
+                     txtResults.SelectionColor = Color.Red;
+                     txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Bold);
+                     txtResults.Text += "Extracting the project " + project.Description.ToUpper() + " from Costx" + Environment.NewLine;
+                     txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Regular);
+                 }
+            ));
 
             manipulate.InsertProjectCover(project.EstimateID, project.EstimateNo, project.Description);
             project.ParentID = manipulate.getParentID(project.EstimateID);
@@ -86,6 +74,18 @@ namespace Integration_Costx_x_CavSoft
             var listOrderDrawing = 1;
             foreach (var drawing in drawings)
             {
+                txtResults.BeginInvoke(
+                     new Action(() =>
+                     {
+                         txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Bold);
+                         
+                         txtResults.SelectionColor = Color.Blue;
+                         txtResults.AppendText("Inserting Drawing " + drawing.ToUpper() + " into CavSoft" + Environment.NewLine);
+                         txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Regular);
+
+                     }
+                ));
+
                 var DrawingID = manipulate.getDetailID();
                 cavSoft.Execute(Queries.insertDrawing(project.EstimateID, project.ParentID, drawing, DrawingID, listOrderDrawing.ToString()));
 
@@ -95,6 +95,17 @@ namespace Integration_Costx_x_CavSoft
 
                 foreach (var folder in folders)
                 {
+                    txtResults.BeginInvoke(
+                         new Action(() =>
+                         {
+                             txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Bold);
+                             txtResults.SelectionColor = Color.DarkGreen;
+                             txtResults.AppendText("   " + folder + Environment.NewLine);
+                             txtResults.SelectionFont = new Font(txtResults.Font, FontStyle.Regular);
+                             txtResults.ScrollToCaret();
+                         }
+                    ));
+
                     var FolderID = manipulate.getDetailID();
                     cavSoft.Execute(Queries.insertFolder(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, orderListFolder.ToString()));
                     //		/*Insert Item Eg. PVC Pipe*/
@@ -109,8 +120,16 @@ namespace Integration_Costx_x_CavSoft
                         {
                             RateCavSoft["Description"] = items[i]["DescriptionItem"];
                         }
-                        
-                        //var test = Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft);
+
+                        txtResults.BeginInvoke(
+                             new Action(() =>
+                             {
+                                 txtResults.AppendText("       " + items[i]["DescriptionItem"] + Environment.NewLine);
+                                 txtResults.ScrollToCaret();
+                             }
+                        ));
+
+
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
                         //Insert StandardRateCostTypeTotals
                         
@@ -135,8 +154,9 @@ namespace Integration_Costx_x_CavSoft
                     orderListFolder++;
                 }
                 listOrderDrawing++;
+                
             }
-            txtResults.AppendText("Project " + project.EstimateNo + " - " + project.Description + Environment.NewLine);
+            
 
         }
 
@@ -153,6 +173,94 @@ namespace Integration_Costx_x_CavSoft
         private void Execute_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            btnStart.Enabled = false;
+
+            if (bgWorker.IsBusy != true)
+            {
+                bgWorker.RunWorkerAsync();
+            }                        
+        }
+
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            txtResults.BeginInvoke(
+                 new Action(() =>
+                 {
+                     txtResults.Text = "Creating temporary table... " + Environment.NewLine;
+                 }
+            ));
+            
+            this.cavSoft.Execute(Queries.dropTableCostx());
+            
+            this.cavSoft.Execute(Queries.createTableCostx());
+            //txtResults.Text += "Done... " + Environment.NewLine;
+            txtResults.BeginInvoke(
+                 new Action(() =>
+                 {
+                     txtResults.Text += "Done... " + Environment.NewLine;
+                 }
+            ));
+
+            txtResults.BeginInvoke(
+                 new Action(() =>
+                 {
+                     txtResults.Text += "Loading projects... " + Environment.NewLine;
+                     txtResults.Text += projKeys.Count.ToString() + " project(s) loaded! " + Environment.NewLine;
+                 }
+            ));
+
+
+            foreach (var projKey in projKeys)
+            {
+                manipulate = new ManipulateCostx();
+                manipulate.cavSoft = this.cavSoft;
+                manipulate.costX = this.costX;
+
+                
+
+                
+                if (manipulate.costX.Connection.State != ConnectionState.Open)
+                {
+                    manipulate.costX.Connection.Open();
+                }
+                if (manipulate.cavSoft.Connection.State != ConnectionState.Open)
+                {
+                    manipulate.cavSoft.Connection.Open();
+                }
+
+                extractFromCostX(projKey);
+                
+                
+                insertIntoCavSoft(projKey);
+                
+                manipulate.cavSoft.Dispose();
+                manipulate.costX.Dispose();
+                
+            }
+
+            this.cavSoft.Dispose();
+            
+            
+        }
+
+        private void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+        }
+
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressBar1.Style = ProgressBarStyle.Blocks;
+            progressBar1.Value = 100;
+            txtResults.AppendText(Environment.NewLine + "COMPLETED!" + Environment.NewLine);
+            btnFinish.Enabled = true;
+
         }
     }
 }
