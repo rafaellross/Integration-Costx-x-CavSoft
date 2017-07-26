@@ -86,17 +86,16 @@ namespace Integration_Costx_x_CavSoft
             var listOrderDrawing = 1;
             foreach (var drawing in drawings)
             {
-                
                 var DrawingID = manipulate.getDetailID();
                 cavSoft.Execute(Queries.insertDrawing(project.EstimateID, project.ParentID, drawing, DrawingID, listOrderDrawing.ToString()));
 
                 var folders = manipulate.getFolders(projectKey, drawing);
                 //*Folder insert Eg. Sewer*/
-                var folderOrder = 1;
+                var orderListFolder = 0;
                 foreach (var folder in folders)
                 {
                     var FolderID = manipulate.getDetailID();
-                    cavSoft.Execute(Queries.insertFolder(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, folderOrder.ToString()));
+                    cavSoft.Execute(Queries.insertFolder(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, orderListFolder.ToString()));
                     //		/*Insert Item Eg. PVC Pipe*/
                     var items = manipulate.getItems(projectKey, drawing, folder);
                     for (int i = 0; i < items.Count; i++)
@@ -113,7 +112,7 @@ namespace Integration_Costx_x_CavSoft
                         //var test = Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft);
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
                         //Insert StandardRateCostTypeTotals
-                        var testStandardRateCostTypeTotals = Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode);
+                        
                         cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
                         //Insert Sub-items
 
@@ -132,6 +131,7 @@ namespace Integration_Costx_x_CavSoft
                             cavSoft.Execute(Queries.insertSubItems(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
                         }
                     }
+                    orderListFolder++;
                 }
                 listOrderDrawing++;
             }

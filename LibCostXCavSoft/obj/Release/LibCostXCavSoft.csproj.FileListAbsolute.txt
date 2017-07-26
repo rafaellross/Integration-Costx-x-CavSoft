@@ -6,4 +6,3 @@ e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCav
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.xml
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.dll
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.pdb
-e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.csprojResolveAssemblyReference.cache

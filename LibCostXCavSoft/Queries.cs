@@ -55,16 +55,16 @@ namespace LibCostXCavSoft
 
         public static string getDrawings(string projectKey)
         {
-            return "select distinct Drawing  from costx Where ProjectKey = '" + projectKey + "'";
+            return "select distinct Drawing  from costx Where ProjectKey = '" + projectKey + "' order by 1";
         }
 
-        public static string insertFolder(string estimateID, string parentID, string drawing, string folder, string DrawingID, string FolderID, string folderOrder)
+        public static string insertFolder(string estimateID, string parentID, string drawing, string folder, string DrawingID, string FolderID, string listOrder = "")
         {
             return @"Declare @Folder_DetailID int = " + FolderID + @";
                         Declare @EstimateID int = " + estimateID + @";
                         Declare @Draw_DetailID int = " + DrawingID + @";
 
-		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, "+ folderOrder + @");
+		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, " + listOrder + @");
 		                
 		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;";
         }
@@ -143,7 +143,7 @@ namespace LibCostXCavSoft
                     else Sum(Length) end Quantity,
                     DescriptionItem
                     from costx where ProjectKey = '" + projectKey + "' and Drawing = '" + drawing + "' and Folder = '" + folder + @"'
-                    group by CodeItem, DimensionType, DescriptionItem";
+                    group by CodeItem, DimensionType, DescriptionItem order by DescriptionItem";
         }
 
         public static string InsertProjectCover(string estimateID, string estimateNo, string description)
@@ -221,7 +221,7 @@ namespace LibCostXCavSoft
 
         public static string getFolders(string projectKey, string drawing)
         {
-            return "select distinct Folder  from costx Where ProjectKey = '" + projectKey + "' and Drawing = '" + drawing + "';";
+            return "select distinct Folder  from costx Where ProjectKey = '" + projectKey + "' and Drawing = '" + drawing + "' order by Folder;";
         }
 
         public static string getParentID(string estimateID)
@@ -303,17 +303,16 @@ namespace LibCostXCavSoft
                     ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
         }
 
-        public static string insertDrawing(string EstimateID, string ParentID, string Description, string DrawingID, string listOrder)
+        public static string insertDrawing(string EstimateID, string ParentID, string Description, string DrawingID, string listOrder = "")
         {
             return @"Declare @Draw_DetailID int =" + DrawingID + @";
                      Declare @EstimateID int = "+ EstimateID + @";
                      Declare @ParentID int = " + ParentID + @";
 		            INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) 
-		            VALUES (@Draw_DetailID, @EstimateID, @ParentID, 1, " + listOrder + " AS MaxOrder FROM EstimateDetails WHERE ParentID = @ParentID), 1));
-
-		            UPDATE EstimateDetails SET ListOrder = 1 WHERE DetailID = @Draw_DetailID;
+		            VALUES (@Draw_DetailID, @EstimateID, @ParentID, 1, " + listOrder + @");
 		            
-		            UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @ParentID, TreeLevel = 1, ListOrder = 1, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + Description + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Draw_DetailID;";
+		            
+		            UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @ParentID, TreeLevel = 1, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + Description + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Draw_DetailID;";
         }
     }
 }
