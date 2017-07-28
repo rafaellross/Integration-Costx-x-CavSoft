@@ -63,8 +63,16 @@ namespace LibCostXCavSoft
                 CommandType = System.Data.CommandType.Text,
                 Connection = Connection
             };
-
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); 
+                throw;
+            }
+            
             cmd.Dispose();
         }
 

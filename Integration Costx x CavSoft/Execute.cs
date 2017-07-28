@@ -133,7 +133,7 @@ namespace Integration_Costx_x_CavSoft
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
                         //Insert StandardRateCostTypeTotals
                         
-                        cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
+                        //cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
                         //Insert Sub-items
 
                         
@@ -143,13 +143,24 @@ namespace Integration_Costx_x_CavSoft
                         
 
                         var subSubItems = manipulate.getSubItems(project.EstimateID, ItemID);
-                        foreach (var subItem in subSubItems)
-                        {
-                            //Insert StandardRateCostTypeTotals
-                            cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
+                        
+                            foreach (var subItem in subSubItems)
+                            {
 
-                            cavSoft.Execute(Queries.insertSubItems(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
-                        }
+                            //Insert StandardRateCostTypeTotals
+                            //cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
+
+                            cavSoft.Execute(Queries.insertSubItems(project.EstimateID, subItem["ParentID"], subItem["RateCode"], "5"));
+                            /*
+                            var subSubItemsCount = manipulate.getSubItems(project.EstimateID, subItem["ParentID"]);
+                                if (subSubItemsCount.Count > 0)
+                                {                                    
+                                    cavSoft.Execute(Queries.UpdateCost(project.EstimateID, subItem["ParentID"]));
+                                }*/
+                            }
+                            // cavSoft.Execute(Queries.UpdateCost(project.EstimateID, ItemID));
+
+                        
                     }
                     orderListFolder++;
                 }

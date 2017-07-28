@@ -54,7 +54,6 @@ namespace LibCostXCavSoft
         {
             var query = cavSoft.queryListToDic(Queries.getParentID(estimateID));
             return query[0]["DetailID"];
-
         }
 
         public List<string> getDrawings(string projectKey)

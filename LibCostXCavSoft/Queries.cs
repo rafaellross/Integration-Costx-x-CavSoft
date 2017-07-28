@@ -43,14 +43,14 @@ namespace LibCostXCavSoft
             query += "'" + measurement.DescriptionItem.Replace("'", "") + "', ";
             query += "'" + measurement.CodeItem + "', ";
 
-            query += "'" + (measurement.Folder.Split('\\').Length > 1? measurement.Folder.Split('\\')[1] : "") + "', ";
-            query +=    measurement.MeasurementItem + ", ";
+            query += "'" + (measurement.Folder.Split('\\').Length > 1 ? measurement.Folder.Split('\\')[1] : "") + "', ";
+            query += measurement.MeasurementItem + ", ";
             query += "'" + measurement.DimensionType + "',";
-            query +=    measurement.Length + " * " + measurement.Multiplier + ", ";
-            query +=    measurement.Area + " * " + measurement.Multiplier + ", ";
-            query +=    measurement.Count + " * " + measurement.Multiplier + ", ";
+            query += measurement.Length + " * " + measurement.Multiplier + ", ";
+            query += measurement.Area + " * " + measurement.Multiplier + ", ";
+            query += measurement.Count + " * " + measurement.Multiplier + ", ";
             query += "'" + measurement.Folder.Split('\\')[0] + "'); ";
-            return query;                       
+            return query;
         }
 
         public static string getDrawings(string projectKey)
@@ -65,50 +65,44 @@ namespace LibCostXCavSoft
                         Declare @Draw_DetailID int = " + DrawingID + @";
 
 		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, " + listOrder + @");
-		                
-		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;";
+
+
+		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;
+                        ";
         }
 
-        public static string insertSubItems(string EstimateID, string ItemID, string itemCode)
+        public static string insertSubItems(string EstimateID, string ItemID, string itemCode, string treeLevel = "4")
         {
             return @"insert into EstimateDetails
+                        (DetailID, EstimateID, ParentID, TreeLevel, ListOrder, Description, RateCode, Units, MarkupLevel, CodeType, CostType, CostCodeID, RateCodeID, Cost, Quantity, ItemChanged, Formula) 
+
 		                select (select Max(DetailID) from EstimateDetails)+1 + ROW_NUMBER() OVER (ORDER BY RateID) as DetailID,
 		                '" + EstimateID + @"' as EstimateID,
 		                '" + ItemID + @"' as ParentID,
-		                '4' as TreeLevel,
+		                '" + treeLevel + @"' as TreeLevel,
 		                rates.ListOrder,
-		                rates.CodeType,
-		                rates.RateCode,
 		                rates.Description,
+		                rates.RateCode,		                
 		                rates.Units,
-		                rates.Quantity,
+                        'A' MarkupLevel,
+                        rates.CodeType,
+                        rates.CostType,
+                        0 as CostCodeID,
+                        rates.RateCodeID,
 		                rates.Cost,
-		                rates.RateCodeID,
-		                rates.CostType,
-		                rates.TotalMaterial,
-		                rates.TotalLabour,
-		                rates.TotalHours,
-		                rates.TotalOther,
-		                'A' MarkupLevel,
-		                0 as TotalSubcontract,
-		                0 as TotalSubcontractHrs,
-		                0 as ItemChanged,
-		                '' as LastUpdate,
-		                0 as CostCodeID,
-		                0 as Deleted,
-		                '' as Formula,
-		                '0' as UserID,
-		                Quantity*Cost as TotalCharge,
-		                Cost as Charge,
-		                0 ColourID
+		                rates.Quantity,
+                        1 as ItemChanged,
+                        '' as Formula
+		                
 		
 		                from StandardRates rates
 		                where ParentID = (select Top 1 RateID from StandardRates where RateCode = '" + itemCode + "');";
         }
 
+        /*
         public static string insertStandardRateCostTypeTotals(string estimateID, string itemID, string itemCode)
         {
-            return @"INSERT INTO EstimateCostTypeTotals (TotalID, EstimateID, DetailID, CostType, MarkupLevel, TotalCost, TotalHours) 
+            return @"INSERT INTO EstimateCostTypeTotals (TotalID, EstimateID, DetailID, CostType, MarkupLevel, TotalCost, TotalHours, TotalCharge) 
 
                     SELECT (Select Max(TotalID) From EstimateCostTypeTotals)+1 + ROW_NUMBER() OVER (ORDER BY Name desc) as TotalID, 
                     " + estimateID + @" as EstimateID,
@@ -116,8 +110,39 @@ namespace LibCostXCavSoft
                     StandardRateCostTypeTotals.CostType,
                      'A' as MarkupLevel,
                      StandardRateCostTypeTotals.TotalCost,
-                     StandardRateCostTypeTotals.TotalHours
+                     StandardRateCostTypeTotals.TotalHours,
+                     StandardRateCostTypeTotals.TotalCost
                     FROM StandardRateCostTypeTotals LEFT JOIN CostTypes ON StandardRateCostTypeTotals.CostType = CostTypes.TypeID WHERE RateID = (select Top 1 RateID from StandardRates where RateCode = '" + itemCode + @"') ORDER BY StandardRateCostTypeTotals.CostType";
+        }*/
+        public static string insertStandardRateCostTypeTotals(string estimateID, string itemID, string itemCode)
+        {
+            return @"
+                        Declare @EstimateID Int = " + estimateID + @", @DetailID Int = " + itemID + @", @RateCode Varchar(20) = '" + itemCode + @"';
+                        Declare @TotalID Int, @CostType	Int, @MarkupLevel	Varchar(1), @TotalCost float,	@TotalHours Float;
+                        Declare cr_total cursor for
+                        SELECT (Select Max(TotalID) From EstimateCostTypeTotals)+1 + ROW_NUMBER() OVER (ORDER BY Name desc) as TotalID, 
+
+                                            StandardRateCostTypeTotals.CostType,
+                                             'A' as MarkupLevel,
+                                             StandardRateCostTypeTotals.TotalCost,
+                                             StandardRateCostTypeTotals.TotalHours
+                     
+                                            FROM StandardRateCostTypeTotals LEFT JOIN CostTypes ON StandardRateCostTypeTotals.CostType = CostTypes.TypeID WHERE RateID = (select Top 1 RateID from StandardRates where RateCode = @RateCode) ORDER BY StandardRateCostTypeTotals.CostType
+
+                        OPEN cr_total   
+                        FETCH NEXT FROM cr_total INTO @TotalID, @CostType, @MarkupLevel, @TotalCost, @TotalHours;
+
+                        WHILE @@FETCH_STATUS = 0   
+                        BEGIN   
+       
+                               INSERT INTO EstimateCostTypeTotals (TotalID, EstimateID, DetailID, CostType, MarkupLevel, TotalCost, TotalHours) 
+	                           VALUES (@TotalID, @EstimateID, @DetailID, @CostType, @MarkupLevel, @TotalCost, @TotalHours)
+
+                               FETCH NEXT FROM cr_total INTO @TotalID, @CostType, @MarkupLevel, @TotalCost, @TotalHours;
+                        END   
+
+                        CLOSE cr_total   
+                        DEALLOCATE cr_total";
         }
 
         public static string getSubItems(string estimateID, string subItemID)
@@ -144,6 +169,34 @@ namespace LibCostXCavSoft
                     DescriptionItem
                     from costx where ProjectKey = '" + projectKey + "' and Drawing = '" + drawing + "' and Folder = '" + folder + @"'
                     group by CodeItem, DimensionType, DescriptionItem order by DescriptionItem";
+        }
+
+        public static string UpdateCost(string Estimate, string EstimateDetail) {
+            return @"declare @p6 float
+                        
+                        declare @p7 float
+                        
+                        Declare @Cost0 float;
+                        Declare @Cost1 float;
+                        Declare @Cost2 float;
+                        Declare @Estimate Int = " +Estimate+ @";
+                        Declare @EstimateDetail Int = " +EstimateDetail+ @";
+
+                        exec GetCostTypeTotalSum @EstimateID=@Estimate,@ParentID=@EstimateDetail,@CostType=0,@MarkupLevel='A',@DetailsArchived=0,@CostSum=@p6 output,@HoursSum=@p7 output
+                        Set @Cost0 = @p6;
+	                        exec UpdateCostTypeTotal @EstimateID=@Estimate,@DetailID=@EstimateDetail,@CostType=0,@MarkupLevel='A',@TotalCost=@p6,@TotalCharge=@p6,@TotalHours=@p7,@DeleteOld=0,@DetailsArchived=0
+
+                        exec GetCostTypeTotalSum @EstimateID=@Estimate,@ParentID=@EstimateDetail,@CostType=1,@MarkupLevel='A',@DetailsArchived=0,@CostSum=@p6 output,@HoursSum=@p7 output
+                        Set @Cost1 = @p6;
+	                        exec UpdateCostTypeTotal @EstimateID=@Estimate,@DetailID=@EstimateDetail,@CostType=1,@MarkupLevel='A',@TotalCost=@p6,@TotalCharge=@p6,@TotalHours=@p7,@DeleteOld=0,@DetailsArchived=0
+
+                        exec GetCostTypeTotalSum @EstimateID=@Estimate,@ParentID=@EstimateDetail,@CostType=2,@MarkupLevel='A',@DetailsArchived=0,@CostSum=@p6 output,@HoursSum=@p7 output
+                        Set @Cost2 = @p6;
+	                        exec UpdateCostTypeTotal @EstimateID=@Estimate,@DetailID=@EstimateDetail,@CostType=2,@MarkupLevel='A',@TotalCost=@p6,@TotalCharge=@p6,@TotalHours=@p7,@DeleteOld=0,@DetailsArchived=0
+
+
+                        Declare @CostFinal float = @Cost0 + @Cost1 + @Cost2;
+                        exec UpdateDetailCost @DetailID=@EstimateDetail,@Cost= @CostFinal,@DetailsArchived=0,@TotalCharge=@CostFinal,@Charge=@CostFinal,@ItemChanged=0";
         }
 
         public static string InsertProjectCover(string estimateID, string estimateNo, string description)
@@ -312,7 +365,7 @@ namespace LibCostXCavSoft
 		            VALUES (@Draw_DetailID, @EstimateID, @ParentID, 1, " + listOrder + @");
 		            
 		            
-		            UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @ParentID, TreeLevel = 1, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + Description + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Draw_DetailID;";
+		            UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @ParentID, TreeLevel = 1, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + Description + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 0, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Draw_DetailID;";
         }
     }
 }
