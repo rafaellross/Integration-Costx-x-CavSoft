@@ -15,3 +15,21 @@ e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.Connection.resources
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.SelectProjects.resources
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.Execute.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\Integration Costx x CavSoft.exe.config
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\Integration Costx x CavSoft.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\Integration Costx x CavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\Npgsql.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\Npgsql.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration Costx x CavSoft.csprojResolveAssemblyReference.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.Connection.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.Execute.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.Properties.Resources.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration_Costx_x_CavSoft.SelectProjects.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration Costx x CavSoft.csproj.GenerateResource.Cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration Costx x CavSoft.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration Costx x CavSoft.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft\obj\Debug\Integration Costx x CavSoft.pdb

@@ -1,0 +1,32 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test_App"
+        xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="Test_App.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+    <Grid Background="#FFDFE9F5">
+        <StackPanel>
+            <StackPanel Height="100">
+                <Custom:Ribbon Height="100"/>
+            </StackPanel>
+            <StackPanel Height="223">
+                <TabControl Height="{Binding RelativeSource={RelativeSource FindAncestor, 
+    AncestorType={x:Type StackPanel}},Path=ActualHeight}">
+                    <TabItem Header="TabItem">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="TabItem">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+            <ToolBar Height="100"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectProjects));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgProjects = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 394);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SelectProjects";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Execute));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtResults = new System.Windows.Forms.RichTextBox();
             this.btnFinish = new System.Windows.Forms.Button();
@@ -101,6 +102,7 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Execute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

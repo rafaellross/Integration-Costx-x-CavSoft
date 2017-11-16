@@ -133,7 +133,7 @@ namespace Integration_Costx_x_CavSoft
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
                         //Insert StandardRateCostTypeTotals
                         
-                        //cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
+
                         //Insert Sub-items
 
                         
@@ -148,19 +148,9 @@ namespace Integration_Costx_x_CavSoft
                             {
 
                             //Insert StandardRateCostTypeTotals
-                            //cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, subItem["ParentID"], subItem["RateCode"]));
 
                             cavSoft.Execute(Queries.insertSubItems(project.EstimateID, subItem["ParentID"], subItem["RateCode"], "5"));
-                            /*
-                            var subSubItemsCount = manipulate.getSubItems(project.EstimateID, subItem["ParentID"]);
-                                if (subSubItemsCount.Count > 0)
-                                {                                    
-                                    cavSoft.Execute(Queries.UpdateCost(project.EstimateID, subItem["ParentID"]));
-                                }*/
-                            }
-                            // cavSoft.Execute(Queries.UpdateCost(project.EstimateID, ItemID));
-
-                        
+                            }                        
                     }
                     orderListFolder++;
                 }
@@ -271,6 +261,8 @@ namespace Integration_Costx_x_CavSoft
             progressBar1.Value = 100;
             txtResults.AppendText(Environment.NewLine + "COMPLETED!" + Environment.NewLine);
             btnFinish.Enabled = true;
+            this.cavSoft.Connection.Dispose();
+            this.costX.Connection.Dispose();
 
         }
     }
