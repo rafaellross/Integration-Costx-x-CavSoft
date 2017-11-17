@@ -24,13 +24,11 @@ namespace Integration_Costx_x_CavSoft
 
         public Execute(DB cavSoft, DbPostgres costX, List<string> projKeys)
         {
-
             InitializeComponent();
             this.cavSoft = cavSoft;
             this.costX = costX;
             this.projKeys = projKeys;
-            txtResults.Text = "Click Start button!";
-                                   
+            txtResults.Text = "Click Start button!";                                   
         }
 
         public void Start()
@@ -118,6 +116,7 @@ namespace Integration_Costx_x_CavSoft
                         var RateCavSoft = cavSoft.queryListToDic(Queries.getRate(ItemCode))[0];
                         if (ItemCode == "SPECIAL" || ItemCode == "")
                         {
+                            ItemCode = "";
                             RateCavSoft["Description"] = items[i]["DescriptionItem"];
                         }
 
@@ -132,11 +131,11 @@ namespace Integration_Costx_x_CavSoft
 
                         cavSoft.Execute(Queries.insertItem(project.EstimateID, project.ParentID, drawing, folder, DrawingID, FolderID, ItemID, i, ItemCode, items[i]["Quantity"], RateCavSoft));
                         //Insert StandardRateCostTypeTotals
-                        
+                        cavSoft.Execute(Queries.insertStandardRateCostTypeTotals(project.EstimateID, ItemID, ItemCode));
 
                         //Insert Sub-items
 
-                        
+
                         cavSoft.Execute(Queries.insertSubItems(project.EstimateID, ItemID, ItemCode));
 
                         //Get sub-item from CavSoft to insert their sub-subItems

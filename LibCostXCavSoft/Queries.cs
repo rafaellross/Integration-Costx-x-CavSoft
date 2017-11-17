@@ -64,7 +64,7 @@ namespace LibCostXCavSoft
                         Declare @EstimateID int = " + estimateID + @";
                         Declare @Draw_DetailID int = " + DrawingID + @";
 
-		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, " + listOrder + @");
+		                INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder) VALUES (@Folder_DetailID, @EstimateID, @Draw_DetailID, 2, " + listOrder+1 + @");
 
 
 		                UPDATE EstimateDetails SET EstimateID = @EstimateID, ParentID = @Draw_DetailID, TreeLevel = 2, CodeType = 0, RateCodeID = 0, CostType = 0, Quantity = 1.000, Cost = 0.00, Charge = 0.00, TotalMaterial = 0.00, TotalLabour = 0.00, TotalHours = 0.000, TotalOther = 0.00, TotalSubcontract = 0.00, TotalSubcontractHrs = 0.00, TotalCharge = 0.00, Description = '" + folder + @"', RateCode = '', Units = '', MarkupLevel = 'A', ItemChanged = 1, LastUpdate = '', CostCodeID = 0, UserID = 0, ColourID = 0, Formula = '' WHERE DetailID = @Folder_DetailID;
@@ -158,7 +158,7 @@ namespace LibCostXCavSoft
         public static string insertItem(string estimateID, string parentID, string drawing, string folder, string drawingID, string folderID, string itemID, int i, string itemCode, string Quantity, Dictionary<string, string> RateCavSoft)
         {
             return @"INSERT INTO EstimateDetails (DetailID, EstimateID, ParentID, TreeLevel, ListOrder, Description, RateCode, Units, MarkupLevel, CodeType, CostType, CostCodeID, RateCodeID, Cost, Quantity, ItemChanged, Formula) 
-		            VALUES (" + itemID + ", " + estimateID + ", " + folderID + ", 3, " + i + ", '" + RateCavSoft["Description"].Replace("'", "") + "', '" + itemCode + "', '" + RateCavSoft["Units"] + "', 'A', 3, 0, 0, 0, replace('" + RateCavSoft["Cost"] + "', ',', '.'), " + Quantity.Replace(",", ".") + ", 1, '');";
+		            VALUES (" + itemID + ", " + estimateID + ", " + folderID + ", 3, " + i+1 + ", '" + RateCavSoft["Description"].Replace("'", "") + "', '" + itemCode + "', '" + RateCavSoft["Units"] + "', 'A', " + (itemCode == "" || itemCode == "SPECIAL"? '4' : '3') +", 0, 0, 0, replace('" + RateCavSoft["Cost"] + "', ',', '.'), " + Quantity.Replace(",", ".") + ", 1, '');";
         }
 
         public static string getItems(string projectKey, string drawing, string folder)
@@ -210,7 +210,7 @@ namespace LibCostXCavSoft
 
                             UPDATE Estimates SET EstimateNo = '', ContactID = 0, RefNumber = 0, Status = 1, PriceToCostAt = 0, TenderPrice = 0.00, Prelims = 0.00, StaticPrelims = 0.00, Overheads = 0.00, Profits = 0.00, TotalCost = 0.00, TotalCharge = 0.00, Retention = 0.00, Rounding = 0.00, Description = '', DueDate = '', JobAddress1 = '', JobAddress2 = '', JobAddress3 = '', JobAddress4 = '', JobAddress5 = '', ContactPhone = '', ContactAreaCode = '', ContactName = '', Builder = '', Consultant = '', Notes = '', LastModifiedDate = '', LastModifiedTime = '', Estimator = '', Supervisor = '', RPD = '', BuildingApplication = '', DrawingNumbers = '', ContactEmail = '', ContactMobile = '', ContactFax = '', ContactFaxAreaCode = '', DateLastUpdated = '', RoundOffTenderPrice = 0, LockTenderPrice = 0, TakeOffUseLocal = 0, OpenedBy = 0, CheckedOutBy = 0, MarkupsSet = 0, PropertyCategory = 0, CreatingUser = 0, DetailsArchived = 0, CallDate = '', CallTime = '', BaseFolder = '' WHERE EstimateID = @EstimateID;
                             
-                            EXECUTE [dbo].[InsertEstimateDetail] @EstimateID,0,0,'Estimate Details','','','A',0,0,0,0,0,1,'',0;
+                            EXECUTE [dbo].[InsertEstimateDetail] @EstimateID,0,0,@Project_Description,'','','A',0,0,0,0,0,1,'',0;
 
                             EXECUTE [dbo].[InsertEstimateDetail] @EstimateID,0,0,'Preliminaries','','','A',5,0,0,0,0,1,'',0;
 
