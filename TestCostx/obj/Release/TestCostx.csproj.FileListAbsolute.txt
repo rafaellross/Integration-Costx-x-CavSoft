@@ -10,3 +10,15 @@ e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\b
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.csprojResolveAssemblyReference.cache
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.exe
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\TestCostx.exe.config
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\TestCostx.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\TestCostx.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\Npgsql.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\Npgsql.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Release\TestCostx.pdb

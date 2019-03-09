@@ -6,3 +6,13 @@ e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCav
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.xml
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.dll
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\Npgsql.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\Npgsql.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\LibCostXCavSoft\obj\Release\LibCostXCavSoft.csprojResolveAssemblyReference.cache

@@ -10,3 +10,16 @@ e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\b
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.csprojResolveAssemblyReference.cache
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.exe
 e:\documents\visual studio 2015\Projects\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.exe.config
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\TestCostx.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\Npgsql.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\Npgsql.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.csprojResolveAssemblyReference.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\TestCostx\obj\Debug\TestCostx.pdb

@@ -313,7 +313,8 @@ namespace LibCostXCavSoft
         {
             return @"select distinct 
                         proj.projkey,
-                        proj.name as proj_name
+                        proj.name as proj_name,
+                        proj.dateadd
 
                         from dimgrprvsn group_dim
                         inner join dim
@@ -324,7 +325,7 @@ namespace LibCostXCavSoft
                         on bldg.bldgkey = dimgrp.bldgkey
                         join proj
                         on proj.projkey = bldg.projkey
-                        where group_dim.custom1name is not null ";
+                        where group_dim.custom1name is not null  order by proj.dateadd desc";
         }       
 
         public static string dropTableCostx()

@@ -73,6 +73,7 @@ namespace Integration_Costx_x_CavSoft
             DataTable dtRecord = new DataTable();
             sqlDataAdap.Fill(dtRecord);
             dgProjects.DataSource = dtRecord;
+            dgProjects.Columns[3].HeaderText = "Date Added";
             dgProjects.Columns[2].HeaderText = "Project Name";
             dgProjects.Columns[1].Visible = false;
             dgProjects.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);

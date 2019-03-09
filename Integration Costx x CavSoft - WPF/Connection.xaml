@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Integration_Costx_x_CavSoft___WPF.BasicPage1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel MinWidth="200">
+                
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+                    <!--Start CostX-->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Database Connection CostX" Style="{StaticResource Heading2}" Margin="0,0,0,20" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Server:" />
+                    <Label Grid.Row="2" Grid.Column="0" Content="Database Name:"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="User:"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Password:"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Name="txtServerCostx"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Name="txtDatabaseCostx"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Margin="3" Name="txtUserCostx"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Name="txtPasswordCostx"/>
+                    
+                    <Button Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Margin="20" Click="btnTestCostX_Click" Name="btnTestCostX">Test Connection</Button>
+                    <!--End CostX-->
+
+                    <!--Start CavSoft-->
+                    <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Text="Database Connection CavSoft" Style="{StaticResource Heading2}" Margin="0,0,0,20" />
+                    <Label Grid.Row="1" Grid.Column="3" Content="Server:"/>
+                    <Label Grid.Row="2" Grid.Column="3" Content="Database Name:"/>
+                    <Label Grid.Row="3" Grid.Column="3" Content="User:"/>
+                    <Label Grid.Row="4" Grid.Column="3" Content="Password:"/>
+
+                    <TextBox x:Name="txtServerCavSoft" Grid.Column="4" Grid.Row="1" Margin="3" />
+                    <TextBox x:Name="txtDatabaseCavSoft" Grid.Column="4" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="txtUserCavSoft" Grid.Column="4" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="txtPasswordCavSoft" Grid.Column="4" Grid.Row="4" Margin="3" />
+                    <Button x:Name="btnTestCavSoft" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Margin="20" Click="btnTestCavSoft_Click">Test Connection</Button>
+                    <!--End CavSoft-->
+                    
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

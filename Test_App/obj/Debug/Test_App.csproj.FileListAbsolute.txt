@@ -23,3 +23,26 @@ E:\Documents\Visual Studio 2015\Projects\Integration Costx x CavSoft\Test_App\ob
 E:\Documents\Visual Studio 2015\Projects\Integration Costx x CavSoft\Test_App\obj\Debug\ToolBar.g.cs
 E:\Documents\Visual Studio 2015\Projects\Integration Costx x CavSoft\Test_App\obj\Debug\ToolBar.baml
 E:\Documents\Visual Studio 2015\Projects\Integration Costx x CavSoft\Test_App\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\Test_App.exe.config
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\Test_App.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\Test_App.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\Microsoft.Windows.Shell.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\Microsoft.Windows.Shell.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\RibbonControlsLibrary.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\bin\Debug\RibbonControlsLibrary.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.csprojResolveAssemblyReference.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\CloseableHeader.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\CloseableHeader.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\MainWindow.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\ToolBar.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\App.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App_MarkupCompile.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App_MarkupCompile.lref
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\MainWindow.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\ToolBar.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.g.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.Properties.Resources.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.csproj.GenerateResource.Cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Test_App\obj\Debug\Test_App.pdb

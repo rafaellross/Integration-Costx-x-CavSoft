@@ -1,0 +1,26 @@
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\Integration Costx x CavSoft - WPF.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\Integration Costx x CavSoft - WPF.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\FirstFloor.ModernUI.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF.csprojResolveAssemblyReference.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\MainWindow.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\App.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\MainWindow.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\App.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF_MarkupCompile.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF.g.resources
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF.csproj.CoreCompileInputs.cache
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF.exe
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Integration Costx x CavSoft - WPF.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Connection.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\Connection.g.cs
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\brand.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\LibCostXCavSoft.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\Npgsql.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\LibCostXCavSoft.pdb
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\Integration Costx x CavSoft - WPF.exe.config
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\Npgsql.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\SelectProject.baml
+C:\Users\Smart Plumbing\Desktop\Projects - VS - 2015\Integration Costx x CavSoft\Integration Costx x CavSoft - WPF\obj\Debug\SelectProject.g.cs
